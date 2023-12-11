@@ -1,0 +1,19 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Новая запись
+{% endblock %}
+
+{% block content %}
+    <h1>Создать новую запись аналитики</h1>
+    <form method="post">
+        {% csrf_token %}<br>
+        {{ form.name }}<br>
+        {{ form.old_price }}<br>
+        {{ form.new_price }}<br>
+        {{ form.growth }}<br>
+        {{ form.recommendations }}<br>
+        <button type="submit" class="btn btn-success">Добавить</button>
+        <span>{{ error }}</span>
+    </form>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Обновить запись
+{% endblock %}
+
+{% block content %}
+    <h1>Обновить аналитику</h1>
+    <form method="post" action="/update">
+        <br>
+        <input type="number" placeholder="Введите id записи, которую вы хотите обновить" class="form-control" name="id_field">
+        {% csrf_token %}<br>
+        {{ form.name }}<br>
+        {{ form.old_price }}<br>
+        {{ form.new_price }}<br>
+        {{ form.growth }}<br>
+        {{ form.recommendations }}<br>
+        <button type="submit" style="background-color:#ffeb3b" class="btn btn-success">Обновить</button>
+        <span>{{ error }}</span>
+    </form>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+    <h1>Главная страница</h1>
+    {% if investments %}
+    <div class="alert alert-warning mt-4" style="text-align: center; overflow: hidden;width: 80%;
+            margin: 0 auto; display: table; padding: 0 0 8em 0;">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Название</th>
+                        <th scope="col">Цена в настоящее время</th>
+                        <th scope="col">Прогноз новой цены</th>
+                        <th scope="col">Рост в %</th>
+                        <th scope="col">Рекомендации</th>
+                    </tr>
+                </thead>
+        {% for el in investments %}
+                <tbody>
+                    <tr>
+                        <th scope="row">{{el.id}}</th>
+                        <td scope="col">{{el.name}}</td>
+                        <td scope="col">{{el.old_price}}</td>
+                        <td scope="col">{{el.new_price}}</td>
+                        <td scope="col">{{el.growth}}</td>
+                        <td scope="col">{{el.recommendations}}</td>
+                    </tr>
+                </tbody>      
+        {% endfor %}
+    </table>
+</div>
+    {% else %}
+        <p>На данный момент мы не успели провести анализ рынка акций</p>
+    {% endif %}
+{% endblock %}

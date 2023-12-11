@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Удалить запись
+{% endblock %}
+
+{% block content %}
+    <h1>Удалить аналитику</h1>
+    <form method="post" action="/delete">
+        {% csrf_token %}<br>
+        <input type="number" placeholder="Введите id записи, которую вы хотите удалить" class="form-control" name="id_field"><br>
+        <button type="submit" style="background-color:red" class="btn btn-success">Удалить</button>
+        <span>{{ error }}</span>
+    </form>
+{% endblock %}
