@@ -4,8 +4,8 @@ from .models import Invest
 
 class InvestSerializer(serializers.Serializer):
     name = serializers.CharField(required=True, allow_blank=False, max_length=30)
-    old_price = serializers.FloatField(required=True)
-    new_price = serializers.FloatField(required=True)
+    old_price = serializers.IntegerField(required=True)
+    new_price = serializers.IntegerField(required=True)
     growth = serializers.FloatField(required=True)
     recommendations = serializers.CharField(required=True, allow_blank=False, max_length=200)
 
