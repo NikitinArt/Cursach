@@ -41,15 +41,13 @@ class InvestView(APIView):
                 return Response(serializer.data, status=status.HTTP_200_OK)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request):
+    def delete(self, request, **kwargs):
         if request.method == 'DELETE':
-            data = {
-                'id': request.data.get('id')
-            }
-            if data['id'] is None:
+            pk = kwargs.get("pk", None)
+            if not pk:
                 return Response({"error": "Wrong data"}, status=status.HTTP_400_BAD_REQUEST)
             try:
-                a = Invest.objects.get(id=data['id'])
+                a = Invest.objects.get(id=pk)
             except:
                 return Response({"error": "Object does not exists"}, status=status.HTTP_400_BAD_REQUEST)
             a.delete()
